@@ -1,0 +1,7 @@
+.idea
+.idea/*
+.venv
+
+test_main.http
+testes.py
+servers_info.json
