@@ -2,6 +2,6 @@
 .idea/*
 .venv
 
-test_main.http
-testes.py
+tests/*
 servers_info.json
+.env

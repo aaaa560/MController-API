@@ -8,9 +8,19 @@ from pathlib import Path
 from typing import Any
 from batata import list_servers as servers_list, load_servers, list_mods as mods, JSONManager
 from fastapi import FastAPI, HTTPException, Header
+from dotenv import load_dotenv
 
-SERVERS_PATH = str(Path('~/Desktop/Coisas Do Decaptado/Mine Server/').expanduser())
-SERVERS_CONFIGS = str(Path('~/Desktop/Coisas Do Decaptado/MineServer-Controller').expanduser())
+load_dotenv()
+
+SERVERS_PATH = os.getenv("MC_SERVERS_PATH")
+if not SERVERS_PATH:
+    raise Exception('Variável MC_SERVERS_PATH não encontrada')
+SERVERS_PATH = str(Path(SERVERS_PATH).expanduser())
+
+SERVERS_CONFIG = os.getenv("MC_SERVERS_CONFIG")
+if not SERVERS_CONFIG:
+    raise Exception('Variável MC_SERVERS_PATH não encontrada')
+SERVERS_CONFIGS = str(Path(SERVERS_CONFIG).expanduser())
 API_KEYS: dict[str, str] = {
     'paper': 'Survivors',
     'forge': 'Survivors-Mods'
